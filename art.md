@@ -113,3 +113,8 @@ This document contains visual prompts for every location in the game, optimized 
 
 36. **The Casino**
     `digital painting, concept art in style of sawtyruk, a high-stakes gambling hall with ornate decorations, a spinning roulette wheel at the center, excited faces in the shadows, opulent and dangerous.`
+
+---
+
+**Intro Screen**
+`digital painting, concept art in style of sawtyruk, two Italian-American mobsters in sharp 1920s suits standing in a dark smoky alleyway, holding classic Thompson submachine guns with drum magazines, tilted fedoras shadowing their eyes, atmospheric moody lighting with deep shadows and harsh highlights from a distant street lamp, a vintage black sedan in the background, cinematic noir aesthetic.`

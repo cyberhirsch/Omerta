@@ -43,9 +43,8 @@
             transition: background-image 0.8s ease-in-out;
             image-rendering: pixelated;
             image-rendering: crisp-edges;
+            position: relative;
         }
-
-
 
         .container {
             position: relative;
@@ -54,7 +53,7 @@
             display: flex;
             flex-direction: column;
             justify-content: space-between;
-            padding: 30px;
+            padding: calc(10 * var(--pixel));
             box-sizing: border-box;
             background: radial-gradient(circle, transparent 0%, rgba(0, 0, 0, 0.4) 100%);
             z-index: 10;
@@ -86,23 +85,13 @@
             font-family: var(--font-main);
         }
 
-        /* Main Game Layout */
-        .main-panel {
-            background: var(--panel-color);
-            padding: calc(8 * var(--pixel));
-            border: calc(1 * var(--pixel)) solid #444;
-            display: flex;
-            flex-direction: column;
-            gap: calc(8 * var(--pixel));
-        }
-
-        .header {
-            border-bottom: 2px solid var(--accent-color);
-            padding-bottom: 10px;
-            margin-bottom: 10px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
+        select {
+            padding: calc(4 * var(--pixel));
+            font-family: var(--font-main);
+            font-size: calc(6 * var(--pixel));
+            background: #333;
+            color: white;
+            border: none;
         }
 
         h1 {
@@ -113,58 +102,9 @@
             letter-spacing: calc(1 * var(--pixel));
         }
 
-        /* The Dashboard */
-        .status-display {
-            background: #111;
-            padding: calc(6 * var(--pixel));
-            border: calc(1 * var(--pixel)) solid #444;
-            font-size: calc(8 * var(--pixel));
-            line-height: 1.5;
-        }
-
-        .current-player {
-            color: var(--highlight-color);
-            font-weight: bold;
-        }
-
-        .location-text {
-            font-size: 20px;
-            color: white;
-            margin-top: 10px;
-        }
-
-        /* REFACTORED UI */
-        body {
-            position: relative;
-        }
-
-        .player-stat-card.active {
-            border-color: var(--accent-color);
-            background: #200;
-            box-shadow: 0 0 10px rgba(255, 51, 51, 0.3);
-        }
-
-        .player-stat-card.active::after {
-            content: "▶";
-            position: absolute;
-            left: -12px;
-            top: 50%;
-            transform: translateY(-50%);
-            color: var(--accent-color);
-            font-size: 10px;
-        }
-
-        .system-ops {
-            display: flex;
-            flex-direction: column;
-            gap: 5px;
-            justify-content: center;
-        }
-
-        /* Scene Section */
         .stats-header {
             display: flex;
-            gap: 15px;
+            gap: calc(10 * var(--pixel));
             justify-content: center;
             width: 100%;
             flex-wrap: wrap;
@@ -178,6 +118,29 @@
             font-size: calc(6 * var(--pixel));
             min-width: calc(80 * var(--pixel));
             position: relative;
+        }
+
+        .player-stat-card.active {
+            border-color: var(--accent-color);
+            background: #200;
+            box-shadow: 0 0 calc(10 * var(--pixel)) rgba(255, 51, 51, 0.3);
+        }
+
+        .player-stat-card.active::after {
+            content: "▶";
+            position: absolute;
+            left: calc(-12 * var(--pixel));
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--accent-color);
+            font-size: calc(8 * var(--pixel));
+        }
+
+        .system-ops {
+            display: flex;
+            flex-direction: column;
+            gap: calc(4 * var(--pixel));
+            justify-content: center;
         }
 
         .scene-container {
@@ -200,17 +163,15 @@
             justify-content: center;
             align-items: center;
             pointer-events: none;
-            /* Allow clicks to background if needed, but panels should override */
         }
 
-        /* Narrative Center */
         .story-panel {
             background: rgba(0, 0, 0, 0.85);
-            border: 2px solid var(--accent-color);
-            padding: 30px;
+            border: calc(2 * var(--pixel)) solid var(--accent-color);
+            padding: calc(30 * var(--pixel));
             text-align: center;
             max-width: 80%;
-            box-shadow: 0 0 20px #000;
+            box-shadow: 0 0 calc(20 * var(--pixel)) #000;
             pointer-events: all;
         }
 
@@ -227,9 +188,10 @@
 
         .controls {
             display: flex;
-            gap: 20px;
+            gap: calc(20 * var(--pixel));
             justify-content: center;
             width: 100%;
+            margin-top: calc(10 * var(--pixel));
         }
 
         button {
@@ -272,11 +234,10 @@
             color: #000;
         }
 
-        /* History (Bottom) */
         .history-section {
             background: #000;
-            padding: 10px;
-            border: 1px solid #222;
+            padding: calc(10 * var(--pixel));
+            border: calc(1 * var(--pixel)) solid #222;
             opacity: 0.8;
         }
 
@@ -290,19 +251,18 @@
             color: #aaa;
         }
 
-        /* TRADE MODAL */
         #trade-modal {
             position: fixed;
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
             background: var(--panel-color);
-            border: 4px solid var(--accent-color);
-            padding: 30px;
+            border: calc(4 * var(--pixel)) solid var(--accent-color);
+            padding: calc(30 * var(--pixel));
             z-index: 200;
             width: 90%;
-            max-width: 600px;
-            box-shadow: 0 0 50px #000;
+            max-width: calc(600 * var(--pixel));
+            box-shadow: 0 0 calc(50 * var(--pixel)) #000;
         }
 
         .trade-grid {
@@ -321,16 +281,6 @@
             overflow-y: auto;
         }
 
-        .prop-item {
-            margin-bottom: 5px;
-            display: block;
-            cursor: pointer;
-        }
-
-        .prop-item input {
-            margin-right: 5px;
-        }
-
         .modal-overlay {
             position: fixed;
             top: 0;
@@ -341,23 +291,17 @@
             z-index: 150;
         }
 
-        /* Removed .families-section */
-
         .hidden {
             display: none !important;
         }
 
         @media (max-width: 700px) {
             #story-text-main {
-                font-size: 12px;
-            }
-
-            #story-text-sub {
-                font-size: 8px;
+                font-size: 10px;
             }
 
             .stats-header {
-                grid-template-columns: 1fr 1fr;
+                gap: 5px;
             }
         }
     </style>
@@ -406,18 +350,18 @@
         <!-- TRADE MODAL (Hidden) -->
         <div id="trade-overlay" class="modal-overlay hidden"></div>
         <div id="trade-modal" class="hidden">
-            <h2
+            <h2 id="trade-title"
                 style="font-size: calc(10 * var(--pixel)); text-transform: uppercase; color: var(--accent-color); margin-bottom: calc(8 * var(--pixel));">
                 Sit Down with another Boss</h2>
 
             <div style="margin-top: calc(8 * var(--pixel)); font-size: calc(8 * var(--pixel));">
-                Deal with: <select id="trade-target"
-                    style="padding: calc(2 * var(--pixel)); font-family: var(--font-main); font-size: calc(8 * var(--pixel)); background: #222; color: #fff; border: calc(1 * var(--pixel)) solid #555;"></select>
+                Deal with: <select id="trade-target"></select>
             </div>
 
             <div class="trade-grid">
                 <div class="trade-col">
-                    <div style="color: var(--highlight-color); margin-bottom: calc(4 * var(--pixel));">Your Offer</div>
+                    <div id="trade-off-label"
+                        style="color: var(--highlight-color); margin-bottom: calc(4 * var(--pixel));">Your Offer</div>
                     <div id="trade-my-props"></div>
                     <div style="margin-top: calc(6 * var(--pixel));">
                         Cash: $<input type="number" id="trade-my-cash" value="0" min="0"
@@ -425,7 +369,8 @@
                     </div>
                 </div>
                 <div class="trade-col">
-                    <div style="color: var(--highlight-color); margin-bottom: calc(4 * var(--pixel));">Requested</div>
+                    <div id="trade-req-label"
+                        style="color: var(--highlight-color); margin-bottom: calc(4 * var(--pixel));">Requested</div>
                     <div id="trade-their-props"></div>
                     <div style="margin-top: calc(6 * var(--pixel));">
                         Cash: $<input type="number" id="trade-their-cash" value="0" min="0"
@@ -435,19 +380,170 @@
             </div>
 
             <div class="controls" style="margin-top: calc(10 * var(--pixel));">
-                <button onclick="proposeDeal()" class="action-btn">Send Offer</button>
-                <button onclick="closeTradeModal()">Cancel</button>
+                <button id="btn-send-deal" onclick="proposeDeal()" class="action-btn">Send Offer</button>
+                <button id="btn-cancel-deal" onclick="closeTradeModal()">Cancel</button>
             </div>
         </div>
 
         <!-- LOG HISTORY (Bottom) -->
         <div class="history-section">
-            <div style="font-size:8px; color:#555; margin-bottom:5px;">HISTORY LOG</div>
+            <div id="log-history-title"
+                style="font-size:calc(5 * var(--pixel)); color:#555; margin-bottom:calc(2 * var(--pixel));">HISTORY LOG
+            </div>
             <div id="log-container"></div>
         </div>
     </div>
 
     <script>
+        // --- LOCALIZATION ---
+        const LOCALES = {
+            en: {
+                welcome: "Welcome to the family. The war begins.",
+                waiting: "Waiting for the Boss to move...",
+                buy: "Buy Turf",
+                expand: "Add Muscle",
+                hub: "Build Hub",
+                deal: "Make Deal",
+                end: "End Turn",
+                bail: "Pay Bribe ($50)",
+                cash: "CASH",
+                turf: "TURF",
+                pinched: "[PINCHED]",
+                rolling: "Rolling the bones...",
+                turn: "Turn: Boss",
+                doubles: "Doubles!",
+                escape: "You slipped past the guards!",
+                max_jail: "Max turns in cooler. You bribed the guards ($50) and walked out.",
+                failed_escape: "Failed Escape. Still in the cooler. Attempt",
+                passed_go: "Paid respects to The Don. Picked up your cut ($200).",
+                up_for_grabs: "This territory is up for grabs. Price:",
+                too_expensive: "Too expensive.",
+                your_turf: "Your turf.",
+                paid_rent: "Kicking up tribute:",
+                laundering: "Laundering operation costs:",
+                raid: "IT'S A RAID! The Feds picked you up.",
+                safe: "Safe haven.",
+                visiting: "Just visiting.",
+                lie_low: "Mattresses. Lie low.",
+                sit_down: "SIT DOWN: Offer from Boss",
+                accept: "Accept Deal",
+                decline: "Decline Deal",
+                offer: "They offer:",
+                want: "They want:",
+                no_turf: "No Turf",
+                propose_title: "Sit Down with another Boss",
+                deal_with: "Deal with:",
+                your_offer: "Your Offer",
+                requested: "Requested",
+                send_offer: "Send Offer",
+                cancel: "Cancel",
+                bankrupt: "IS BANKRUPT!",
+                winner: "is the Capo di tutti i capi!",
+                history: "HISTORY LOG",
+                buy_success: "Acquired",
+                expand_success: "Expansion Successful.",
+                improv_msg: "You've established"
+            },
+            de: {
+                welcome: "Willkommen in der Familie. Der Krieg beginnt.",
+                waiting: "Warte auf den Boss...",
+                buy: "Gebiet kaufen",
+                expand: "Verstärkung holen",
+                hub: "Zentrum bauen",
+                deal: "Deal machen",
+                end: "Zug beenden",
+                bail: "Bestechung zahlen ($50)",
+                cash: "BARGELD",
+                turf: "GEBIET",
+                pinched: "[VERHAFTET]",
+                rolling: "Die Würfel fallen...",
+                turn: "Zug: Boss",
+                doubles: "Pasch!",
+                escape: "Du bist den Wachen entwischt!",
+                max_jail: "Zeit abgesessen. Wachen bestochen ($50) und rausspaziert.",
+                failed_escape: "Flucht gescheitert. Immer noch im Bau. Versuch",
+                passed_go: "Dem Don Respekt gezollt. Deinen Anteil abgeholt ($200).",
+                up_for_grabs: "Dieses Gebiet steht zum Verkauf. Preis:",
+                too_expensive: "Zu teuer.",
+                your_turf: "Dein Revier.",
+                paid_rent: "Tribut gezahlt:",
+                laundering: "Geldwäschekosten:",
+                raid: "RAZZIA! Die Bundesbeamten haben dich geschnappt.",
+                safe: "Sicherer Hafen.",
+                visiting: "Nur zu Besuch.",
+                lie_low: "Matratzenlager. Untertauchen.",
+                sit_down: "BESPRECHUNG: Angebot von Boss",
+                accept: "Deal annehmen",
+                decline: "Deal ablehnen",
+                offer: "Sie bieten:",
+                want: "Sie wollen:",
+                no_turf: "Kein Gebiet",
+                propose_title: "Besprechung mit einem anderen Boss",
+                deal_with: "Verhandle mit:",
+                your_offer: "Dein Angebot",
+                requested: "Gefordert",
+                send_offer: "Angebot senden",
+                cancel: "Abbrechen",
+                bankrupt: "IST PLEITE!",
+                winner: "ist der Capo di tutti i capi!",
+                history: "HISTORIE",
+                buy_success: "Erworben:",
+                expand_success: "Erweiterung erfolgreich.",
+                improv_msg: "Du hast aufgebaut:"
+            },
+            tr: {
+                welcome: "Aileye hoş geldin. Savaş başlıyor.",
+                waiting: "Patronun hamlesi bekleniyor...",
+                buy: "Bölge Satın Al",
+                expand: "Eleman Ekle",
+                hub: "Merkez Kur",
+                deal: "Anlaşma Yap",
+                end: "Turu Bitir",
+                bail: "Rüşvet Öde ($50)",
+                cash: "NAKİT",
+                turf: "BÖLGE",
+                pinched: "[YAKALANDI]",
+                rolling: "Zarlar atılıyor...",
+                turn: "Sıra: Patron",
+                doubles: "Çift!",
+                escape: "Gardiyanları atlatıp kaçtın!",
+                max_jail: "Hapis süresi doldu. Gardiyanlara rüşvet ($50) verip çıktın.",
+                failed_escape: "Kaçış başarısız. Hala içeridesin. Deneme",
+                passed_go: "Don'a saygılarını sundun. Payını aldın ($200).",
+                up_for_grabs: "Bu bölge boşta. Fiyat:",
+                too_expensive: "Çok pahalı.",
+                your_turf: "Senin bölgen.",
+                paid_rent: "Haraç ödendi:",
+                laundering: "Para aklama masrafları:",
+                raid: "BASKIN! Federal polis seni paketledi.",
+                safe: "Güvenli liman.",
+                visiting: "Sadece ziyaret.",
+                lie_low: "Yataklar. İzini kaybettir.",
+                sit_down: "TOPLANTI: Patron gönderdi:",
+                accept: "Anlaşmayı Kabul Et",
+                decline: "Reddet",
+                offer: "Teklifleri:",
+                want: "İstedikleri:",
+                no_turf: "Bölge Yok",
+                propose_title: "Başka bir Patronla masaya otur",
+                deal_with: "Kiminle:",
+                your_offer: "Senin Teklifin",
+                requested: "İstenen",
+                send_offer: "Teklif Gönder",
+                cancel: "İptal",
+                bankrupt: "İFLAS ETTİ!",
+                winner: "artık Patronların Patronu!",
+                history: "GEÇMİŞ",
+                buy_success: "Satın alındı:",
+                expand_success: "Genişleme başarılı.",
+                improv_msg: "Kuruldu:"
+            }
+        };
+
+        function t(key, lang) {
+            return LOCALES[lang || 'en'][key] || LOCALES['en'][key];
+        }
+
         // --- ASSETS ---
         const ASSETS = {
             mansion: "01_Mansion.jpg",
@@ -517,10 +613,17 @@
             nameArea.innerHTML = '';
             const n = parseInt(numInput.value);
             for (let i = 0; i < n; i++) {
-                nameArea.innerHTML += `<input type="text" id="pname-${i}" placeholder="Boss Name ${i + 1}" value="Boss ${i + 1}">`;
+                nameArea.innerHTML += `
+                <div style="display:flex; gap: calc(5 * var(--pixel)); align-items:center;">
+                    <input type="text" id="pname-${i}" placeholder="Boss Name ${i + 1}" value="Boss ${i + 1}">
+                    <select id="plang-${i}">
+                        <option value="en">EN</option>
+                        <option value="de">DE</option>
+                        <option value="tr">TR</option>
+                    </select>
+                </div>`;
             }
         });
-        // Trigger once to init
         numInput.dispatchEvent(new Event('change'));
 
         function startGame() {
@@ -528,6 +631,7 @@
             state.players = [];
             for (let i = 0; i < n; i++) {
                 let name = document.getElementById(`pname-${i}`).value || `Boss ${i + 1}`;
+                let plLang = document.getElementById(`plang-${i}`).value;
                 state.players.push({
                     name: name,
                     money: 1500,
@@ -536,20 +640,18 @@
                     inJail: false,
                     jailTurns: 0,
                     bankrupt: false,
+                    lang: plLang,
                     color: `hsl(${i * 360 / n}, 70%, 50%)`
                 });
             }
-            // Init Property state
             BOARD.forEach(b => {
-                if (b.type === 'PROP') state.propData[b.name] = { muscle: 0 };
+                if (b.type === 'PROP' || b.type === 'RAIL' || b.type === 'UTIL') state.propData[b.name] = { muscle: 0 };
             });
 
             state.gameStarted = true;
             document.getElementById('setup-screen').classList.add('hidden');
             document.getElementById('game-ui').style.display = 'flex';
-            log("The families have gathered. The war begins.");
-
-            // Start the first turn automatically
+            log(t('welcome', state.players[0].lang));
             startTurnLogic();
         }
 
@@ -557,20 +659,15 @@
         function setStory(main, sub) {
             document.getElementById('story-text-main').innerHTML = main;
             document.getElementById('story-text-sub').innerHTML = sub || "";
-            // Also log it for history
-            // log(main + " " + (sub || ""));
         }
 
         // --- CORE GAMEPLAY ---
-
         function getCurrentPlayer() {
             return state.players[state.currentPlayerIdx];
         }
 
         function startTurnLogic() {
             let p = getCurrentPlayer();
-
-            // Check for Pending Deals
             let incomingDeal = state.pendingDeals.find(d => d.to === state.currentPlayerIdx);
             if (incomingDeal) {
                 state.phase = 'TRADE_RESPONSE';
@@ -578,10 +675,8 @@
                 return;
             }
 
-            // Normal Turn Start
-            setStory(`Turn: Boss ${p.name}`, "Rolling the bones...");
+            setStory(`${t('turn', p.lang)} ${p.name}`, t('rolling', p.lang));
 
-            // Hidden Dice Roll (Short Timeout for effect?)
             setTimeout(() => {
                 let d1 = Math.floor(Math.random() * 6) + 1;
                 let d2 = Math.floor(Math.random() * 6) + 1;
@@ -590,8 +685,8 @@
 
                 if (p.inJail) {
                     if (isDoubles) {
-                        setStory("Doubles!", "You slipped past the guards!");
-                        log(`Doubles! Escape.`);
+                        setStory(t('doubles', p.lang), t('escape', p.lang));
+                        log(`${t('doubles', p.lang)} ${t('escape', p.lang)}`);
                         p.inJail = false;
                         p.jailTurns = 0;
                         setTimeout(() => movePlayer(p, total), 1000);
@@ -601,11 +696,11 @@
                             p.money -= 50;
                             p.inJail = false;
                             p.jailTurns = 0;
-                            setStory("Max turns in cooler.", "You bribed the guards ($50) and walked out.");
-                            log("Paid bail ($50) after 3 failed attempts.");
+                            setStory(t('max_jail', p.lang), "");
+                            log(t('max_jail', p.lang));
                             setTimeout(() => movePlayer(p, total), 1000);
                         } else {
-                            setStory("Failed Escape.", `Still in the cooler. Attempt ${p.jailTurns}/3.`);
+                            setStory(t('failed_escape', p.lang), `${t('failed_escape', p.lang)} ${p.jailTurns}/3.`);
                             state.phase = 'END';
                             updateUI();
                         }
@@ -619,143 +714,114 @@
         function movePlayer(p, steps) {
             let oldPos = p.pos;
             p.pos = (p.pos + steps) % BOARD.length;
-
-            // Passed Go
             if (p.pos < oldPos) {
                 p.money += 200;
-                log(`<span class="log-good">Paid respects to The Don. Picked up your cut ($200).</span>`);
+                log(`<span class="log-good">${t('passed_go', p.lang)}</span>`);
             }
-
             handleLanding(p);
-        }
-
-        function getArrivalFlavor(name) {
-            const phrases = [
-                `You pull up to <b>${name}</b>.`,
-                `Your crew arrives at <b>${name}</b>.`,
-                `Scouting the streets of <b>${name}</b>.`,
-                `You step out at <b>${name}</b>.`
-            ];
-            return phrases[Math.floor(Math.random() * phrases.length)];
-        }
-
-        function ownsFullGroup(player, group) {
-            if (!group) return false;
-            const propsInGroup = BOARD.filter(b => b.group === group).map(b => b.name);
-            return propsInGroup.every(name => player.properties.includes(name));
         }
 
         function handleLanding(p) {
             let space = BOARD[p.pos];
-            let mainText = getArrivalFlavor(space.name.toUpperCase());
+            let mainText = space.name.toUpperCase();
             let subText = "";
-            let flavorLog = mainText; // Keep for log
-
-            // Defaults
             state.phase = 'END';
 
             if (space.type === 'PROP' || space.type === 'RAIL' || space.type === 'UTIL') {
                 let owner = getOwner(space.name);
-
                 if (!owner) {
                     if (p.money >= space.price) {
-                        state.phase = 'BUY_DECISION'; // Enable Buy Button
-                        subText = `This territory is up for grabs. Price: <span style="color:var(--highlight-color)">$${space.price}</span>.`;
-                        flavorLog += " It's available.";
+                        state.phase = 'BUY_DECISION';
+                        subText = `${t('up_for_grabs', p.lang)} <span style="color:var(--highlight-color)">$${space.price}</span>.`;
                     } else {
-                        subText = `Up for grabs, but you're short on cash ($${space.price}).`;
-                        flavorLog += " Too expensive.";
+                        subText = `${t('up_for_grabs', p.lang)} $${space.price}. ${t('too_expensive', p.lang)}`;
                     }
                 } else if (owner === p) {
-                    // Story choice: If they own the set, they can build!
                     if (space.type === 'PROP' && ownsFullGroup(p, space.group)) {
-                        let currentMuscle = state.propData[space.name].muscle;
-                        if (currentMuscle < 5) {
+                        let data = state.propData[space.name];
+                        if (data.muscle < 5) {
                             state.phase = 'IMPROVE';
-                            let cost = space.housePrice;
-                            let buildText = currentMuscle < 4 ? "Add Muscle" : "Establish Racket Hub";
-                            subText = `Your people run this spot. Since you control the whole neighborhood, you can <b>${buildText}</b> for $${cost}.`;
+                            let buildText = data.muscle < 4 ? t('expand', p.lang) : t('hub', p.lang);
+                            subText = `${t('your_turf', p.lang)} ${buildText} ($${space.housePrice}).`;
                         } else {
-                            subText = "This spot is fully upgraded. A high-rolling Racket Hub.";
+                            subText = t('your_turf', p.lang);
                         }
-                    } else if (space.type === 'PROP') {
-                        subText = "Your people run this spot. Secure the whole neighborhood to increase the racket.";
                     } else {
-                        subText = "Your people run this spot. All quiet.";
+                        subText = t('your_turf', p.lang);
                     }
-                    flavorLog += " Your turf.";
                 } else {
-                    // Pay Rent
                     let rent = calculateRent(space, owner);
-                    subText = `<span class="log-bad">Turf of Boss ${owner.name}. Kicking up tribute: $${rent}.</span>`;
-                    flavorLog += ` Paid rent $${rent} to ${owner.name}.`;
+                    subText = `<span class="log-bad">${t('paid_rent', p.lang)} $${rent} (${owner.name}).</span>`;
+                    log(`${p.name} paid $${rent} to ${owner.name}.`);
                     transferMoney(p, owner, rent);
                 }
-            }
-            else if (space.type === 'TAX') {
-                subText = `<span class="log-bad">Laundering operation costs: $${space.amount}</span>`;
+            } else if (space.type === 'TAX') {
+                subText = `<span class="log-bad">${t('laundering', p.lang)} $${space.amount}</span>`;
                 p.money -= space.amount;
                 checkBankruptcy(p);
-            }
-            else if (space.type === 'GOTOJAIL') {
-                subText = `<span class="log-bad">IT'S A RAID! The Feds are pinched you.</span>`;
+            } else if (space.type === 'GOTOJAIL') {
+                subText = `<span class="log-bad">${t('raid', p.lang)}</span>`;
                 sendToJail(p);
-            }
-            else if (space.type === 'CARD') {
-                let res = drawCard(p); // Update drawCard to return string
-                subText = res;
+            } else if (space.type === 'CARD') {
+                subText = drawCard(p);
             } else if (space.type === 'GO') {
-                subText = "Safe haven.";
+                subText = t('safe', p.lang);
             } else if (space.type === 'JAIL') {
-                subText = "Just visiting.";
+                subText = t('visiting', p.lang);
             } else if (space.type === 'SAFE') {
-                subText = "Mattresses. Lie low.";
+                subText = t('lie_low', p.lang);
             }
 
             setStory(mainText, subText);
-            log(flavorLog);
             updateUI();
         }
 
         function getOwner(propName) {
-            for (let p of state.players) {
-                if (p.properties.includes(propName)) return p;
-            }
-            return null;
+            return state.players.find(pl => pl.properties.includes(propName));
         }
 
         function calculateRent(space, owner) {
             if (space.type === 'PROP') {
-                let levels = state.propData[space.name].muscle;
-                let rent = space.rentList[levels];
-                // Monopoly rule: Double rent if unimproved but full set owned
-                if (levels === 0 && ownsFullGroup(owner, space.group)) {
-                    rent *= 2;
-                }
+                let data = state.propData[space.name];
+                let rent = space.rentList[data.muscle];
+                if (data.muscle === 0 && ownsFullGroup(owner, space.group)) rent *= 2;
                 return rent;
-            }
-            if (space.type === 'RAIL') {
-                let count = owner.properties.filter(n => {
-                    let s = BOARD.find(b => b.name === n);
-                    return s.type === 'RAIL';
+            } else if (space.type === 'RAIL') {
+                let count = state.players.reduce((acc, pl) => acc + (pl.properties.filter(pn => BOARD.find(b => b.name === pn && b.type === 'RAIL')).length), 0); // Simplified
+                let ownerCount = owner.properties.filter(pn => {
+                    let b = BOARD.find(x => x.name === pn);
+                    return b && b.type === 'RAIL';
                 }).length;
-                return 25 * Math.pow(2, count - 1);
-            }
-            if (space.type === 'UTIL') {
-                let count = owner.properties.filter(n => {
-                    let s = BOARD.find(b => b.name === n);
-                    return s.type === 'UTIL';
+                return 25 * Math.pow(2, ownerCount - 1);
+            } else if (space.type === 'UTIL') {
+                let ownerCount = owner.properties.filter(pn => {
+                    let b = BOARD.find(x => x.name === pn);
+                    return b && b.type === 'UTIL';
                 }).length;
-                let dice = (Math.floor(Math.random() * 12) + 2);
-                return (count === 1 ? 4 : 10) * dice;
+                let roll = Math.floor(Math.random() * 10) + 2;
+                return ownerCount === 1 ? roll * 4 : roll * 10;
             }
             return 0;
         }
 
-        function transferMoney(fromP, toP, amount) {
-            fromP.money -= amount;
-            if (toP) toP.money += amount;
-            checkBankruptcy(fromP);
+        function transferMoney(from, to, amount) {
+            from.money -= amount;
+            to.money += amount;
+            checkBankruptcy(from);
+        }
+
+        function checkBankruptcy(p) {
+            if (p.money < 0) {
+                log(`<span class="log-bad">BOSS ${p.name.toUpperCase()} ${t('bankrupt', p.lang)}</span>`);
+                p.bankrupt = true;
+            }
+        }
+
+        function sendToJail(p) {
+            p.pos = 10;
+            p.inJail = true;
+            p.jailTurns = 0;
+            state.phase = 'END';
         }
 
         function buyProperty() {
@@ -764,8 +830,7 @@
             if (p.money >= space.price) {
                 p.money -= space.price;
                 p.properties.push(space.name);
-                setStory(`Acquired ${space.name}!`, "The family influence grows. Secure the whole neighborhood to expand further.");
-                log(`Acquired ${space.name}.`);
+                log(`${t('buy_success', p.lang)} ${space.name}.`);
                 state.phase = 'END';
                 updateUI();
             }
@@ -778,331 +843,258 @@
             if (p.money >= space.housePrice && data.muscle < 5) {
                 p.money -= space.housePrice;
                 data.muscle++;
-                let buildName = data.muscle < 5 ? `Muscle Level ${data.muscle}` : "a Racket Hub";
-                setStory("Expansion Successful.", `You've established ${buildName} at ${space.name}.`);
-                log(`Improved ${space.name} to Level ${data.muscle}.`);
+                log(`${t('expand_success', p.lang)} ${space.name}.`);
                 state.phase = 'END';
                 updateUI();
             }
         }
 
-        function sendToJail(p) {
-            p.pos = 10; // Jail index
-            p.inJail = true;
-            p.jailTurns = 0;
-            state.phase = 'END';
-        }
-
-        function payBail() {
-            let p = getCurrentPlayer();
-            if (p.money >= 50) {
-                p.money -= 50;
-                p.inJail = false;
-                p.jailTurns = 0;
-                log("Judge bribed ($50). You hit the streets again.");
-                // Don't change phase, allow rolling now
-                updateUI();
-            }
+        function ownsFullGroup(player, group) {
+            if (!group) return false;
+            return BOARD.filter(b => b.group === group).every(b => player.properties.includes(b.name));
         }
 
         function drawCard(p) {
             const cards = [
-                { msg: "Bank error (Laundering success). Collect $200.", val: 200 },
-                { msg: "Doctor's fees (Bullet removal). Pay $50.", val: -50 },
-                { msg: "From sale of stock (Smuggled goods). Collect $50.", val: 50 },
-                { msg: "Pay protection money. Pay $100.", val: -100 },
-                { msg: "You won a bet on the fights. Collect $100.", val: 100 },
-                { msg: "Get Out of Jail Free (Kept).", val: 0 }
+                { msg: "Tax refund. Collect $50.", amt: 50 },
+                { msg: "Doctor's fee. Pay $50.", amt: -50 },
+                { msg: "Inheritance. Collect $100.", amt: 100 }
             ];
             let c = cards[Math.floor(Math.random() * cards.length)];
-            // log(`[CARD] ${c.msg}`);
-            if (c.val !== 0) {
-                p.money += c.val;
-                checkBankruptcy(p);
-            }
-            return `[CHANCE] ${c.msg}`;
+            p.money += c.amt;
+            log(`${p.name}: ${c.msg}`);
+            return c.msg;
         }
 
-        function checkBankruptcy(p) {
-            if (p.money < 0) {
-                log(`<span class="log-bad" style="font-size:1.2em">BOSS ${p.name.toUpperCase()} IS BANKRUPT!</span>`);
-                p.bankrupt = true;
-                // Transfer props logic omitted for simplicity, just removed from game effectively
-            }
-        }
-
-        // --- TRADING SYSTEM ---
+        // --- TRADE ---
         function openTradeModal() {
             let p = getCurrentPlayer();
-            let targetSelect = document.getElementById('trade-target');
-            targetSelect.innerHTML = '';
-            state.players.forEach((target, idx) => {
-                if (idx !== state.currentPlayerIdx && !target.bankrupt) {
-                    targetSelect.innerHTML += `<option value="${idx}">${target.name}</option>`;
+            let targetSel = document.getElementById('trade-target');
+            targetSel.innerHTML = "";
+            state.players.forEach((pl, idx) => {
+                if (idx !== state.currentPlayerIdx && !pl.bankrupt) {
+                    targetSel.innerHTML += `<option value="${idx}">${pl.name}</option>`;
                 }
             });
 
-            // Populate property lists
-            let myPropsDiv = document.getElementById('trade-my-props');
-            myPropsDiv.innerHTML = '';
-            p.properties.forEach(name => {
-                myPropsDiv.innerHTML += `<label class="prop-item"><input type="checkbox" data-name="${name}"> ${name}</label>`;
-            });
-
-            // Initial their props (changes based on selection)
-            updateTheirTradeProps();
-            targetSelect.onchange = updateTheirTradeProps;
-
-            document.getElementById('trade-modal').classList.remove('hidden');
             document.getElementById('trade-overlay').classList.remove('hidden');
-        }
-
-        function updateTheirTradeProps() {
-            let targetIdx = document.getElementById('trade-target').value;
-            let targetPlayer = state.players[targetIdx];
-            let div = document.getElementById('trade-their-props');
-            div.innerHTML = '';
-            targetPlayer.properties.forEach(name => {
-                div.innerHTML += `<label class="prop-item"><input type="checkbox" data-name="${name}"> ${name}</label>`;
-            });
+            document.getElementById('trade-modal').classList.remove('hidden');
+            updateTradeUI();
         }
 
         function closeTradeModal() {
-            document.getElementById('trade-modal').classList.add('hidden');
             document.getElementById('trade-overlay').classList.add('hidden');
+            document.getElementById('trade-modal').classList.add('hidden');
         }
+
+        function updateTradeUI() {
+            let p = getCurrentPlayer();
+            let lang = p.lang;
+            document.getElementById('trade-title').innerText = t('propose_title', lang);
+            document.getElementById('trade-off-label').innerText = t('your_offer', lang);
+            document.getElementById('trade-req-label').innerText = t('requested', lang);
+            document.getElementById('btn-send-deal').innerText = t('send_offer', lang);
+            document.getElementById('btn-cancel-deal').innerText = t('cancel', lang);
+
+            let myProps = document.getElementById('trade-my-props');
+            myProps.innerHTML = "";
+            p.properties.forEach(pn => {
+                myProps.innerHTML += `<label class="prop-item"><input type="checkbox" value="${pn}">${pn}</label>`;
+            });
+
+            let targetIdx = parseInt(document.getElementById('trade-target').value);
+            let targetP = state.players[targetIdx];
+            let theirProps = document.getElementById('trade-their-props');
+            theirProps.innerHTML = "";
+            if (targetP) {
+                targetP.properties.forEach(pn => {
+                    theirProps.innerHTML += `<label class="prop-item"><input type="checkbox" value="${pn}">${pn}</label>`;
+                });
+            }
+        }
+
+        document.getElementById('trade-target').addEventListener('change', updateTradeUI);
 
         function proposeDeal() {
             let p = getCurrentPlayer();
             let targetIdx = parseInt(document.getElementById('trade-target').value);
-            let myCash = parseInt(document.getElementById('trade-my-cash').value) || 0;
-            let theirCash = parseInt(document.getElementById('trade-their-cash').value) || 0;
+            let offerCash = parseInt(document.getElementById('trade-my-cash').value) || 0;
+            let reqCash = parseInt(document.getElementById('trade-their-cash').value) || 0;
 
-            if (myCash > p.money) { alert("You don't have that much cash, Boss."); return; }
+            let offerProps = Array.from(document.getElementById('trade-my-props').querySelectorAll('input:checked')).map(i => i.value);
+            let reqProps = Array.from(document.getElementById('trade-their-props').querySelectorAll('input:checked')).map(i => i.value);
 
-            let myProps = Array.from(document.getElementById('trade-my-props').querySelectorAll('input:checked')).map(i => i.dataset.name);
-            let theirProps = Array.from(document.getElementById('trade-their-props').querySelectorAll('input:checked')).map(i => i.dataset.name);
-
-            state.pendingDeals.push({
-                from: state.currentPlayerIdx,
-                to: targetIdx,
-                offerCash: myCash,
-                offerProps: myProps,
-                reqCash: theirCash,
-                reqProps: theirProps
-            });
-
-            log(`Boss ${p.name} proposed a deal to Boss ${state.players[targetIdx].name}.`);
+            state.pendingDeals.push({ from: state.currentPlayerIdx, to: targetIdx, offerCash, reqCash, offerProps, reqProps });
             closeTradeModal();
+            log(`Deal proposed to ${state.players[targetIdx].name}.`);
         }
 
         function showDeal(deal) {
             let fromP = state.players[deal.from];
-            let main = `SIT DOWN: Offer from Boss ${fromP.name}`;
-            let sub = `They offer: $${deal.offerCash} and [${deal.offerProps.join(", ") || "No Turf"}]<br>`;
-            sub += `They want: $${deal.reqCash} and [${deal.reqProps.join(", ") || "No Turf"}]`;
-
+            let toP = state.players[deal.to];
+            let main = `${t('sit_down', toP.lang)} ${fromP.name}`;
+            let sub = `${t('offer', toP.lang)} $${deal.offerCash} & [${deal.offerProps.join(", ") || t('no_turf', toP.lang)}]<br>`;
+            sub += `${t('want', toP.lang)} $${deal.reqCash} & [${deal.reqProps.join(", ") || t('no_turf', toP.lang)}]`;
             setStory(main, sub);
 
-            // Re-purpose buttons temporarily
-            document.getElementById('btn-buy').innerText = "Accept Deal";
-            document.getElementById('btn-buy').onclick = () => acceptDeal(deal);
-            document.getElementById('btn-buy').disabled = false;
-            document.getElementById('btn-buy').classList.remove('hidden');
+            let buyBtn = document.getElementById('btn-buy');
+            buyBtn.innerText = t('accept', toP.lang);
+            buyBtn.onclick = () => acceptDeal(deal);
+            buyBtn.disabled = false;
+            buyBtn.classList.remove('hidden');
 
-            document.getElementById('btn-end').innerText = "Decline Deal";
-            document.getElementById('btn-end').onclick = () => declineDeal(deal);
-            document.getElementById('btn-end').disabled = false;
+            let endBtn = document.getElementById('btn-end');
+            endBtn.innerText = t('decline', toP.lang);
+            endBtn.onclick = () => declineDeal(deal);
+            endBtn.disabled = false;
         }
 
         function acceptDeal(deal) {
             let fromP = state.players[deal.from];
             let toP = state.players[deal.to];
-
-            // Safety check for cash
-            if (toP.money < deal.reqCash) {
-                alert("You can't afford this deal, Boss.");
+            if (toP.money < deal.reqCash || fromP.money < deal.offerCash) {
+                alert("Boss, someone's light on cash.");
                 declineDeal(deal);
                 return;
             }
-            if (fromP.money < deal.offerCash) {
-                alert("The other Boss doesn't have the cash anymore.");
-                declineDeal(deal);
-                return;
-            }
+            fromP.money -= deal.offerCash; toP.money += deal.offerCash;
+            toP.money -= deal.reqCash; fromP.money += deal.reqCash;
 
-            // Transfer Cash
-            fromP.money -= deal.offerCash;
-            toP.money += deal.offerCash;
-            toP.money -= deal.reqCash;
-            fromP.money += deal.reqCash;
-
-            // Transfer Props
-            deal.offerProps.forEach(name => {
-                fromP.properties = fromP.properties.filter(n => n !== name);
-                toP.properties.push(name);
+            deal.offerProps.forEach(pn => {
+                fromP.properties = fromP.properties.filter(n => n !== pn);
+                toP.properties.push(pn);
             });
-            deal.reqProps.forEach(name => {
-                toP.properties = toP.properties.filter(n => n !== name);
-                fromP.properties.push(name);
+            deal.reqProps.forEach(pn => {
+                toP.properties = toP.properties.filter(n => n !== pn);
+                fromP.properties.push(pn);
             });
 
-            log(`<span class="log-good">A deal was struck between Boss ${fromP.name} and Boss ${toP.name}!</span>`);
-
-            // Clean up
+            log("A deal was struck.");
             state.pendingDeals = state.pendingDeals.filter(d => d !== deal);
             resetButtons();
-            startTurnLogic(); // Continue the turn after deal
-        }
-
-        function declineDeal(deal) {
-            log(`Boss ${state.players[deal.to].name} rejected the deal.`);
-            state.pendingDeals = state.pendingDeals.filter(d => d !== deal);
-            resetButtons();
-            startTurnLogic(); // Continue the turn
-        }
-
-        function resetButtons() {
-            document.getElementById('btn-buy').innerText = "Buy Turf";
-            document.getElementById('btn-buy').onclick = buyProperty;
-            document.getElementById('btn-end').innerText = "End Turn";
-            document.getElementById('btn-end').onclick = endTurn;
-        }
-
-        function endTurn() {
-            // Find next non-bankrupt player
-            let originalIdx = state.currentPlayerIdx;
-            do {
-                state.currentPlayerIdx = (state.currentPlayerIdx + 1) % state.players.length;
-            } while (state.players[state.currentPlayerIdx].bankrupt && state.currentPlayerIdx !== originalIdx);
-
-            // Check game over
-            let active = state.players.filter(p => !p.bankrupt);
-            if (active.length === 1) {
-                alert(`GAME OVER! ${active[0].name} is the Capo di tutti i capi!`);
-                return;
-            }
-
-            // Immediately start next turn
             startTurnLogic();
         }
 
-        // --- UI UPDATES ---
+        function declineDeal(deal) {
+            log("Deal rejected.");
+            state.pendingDeals = state.pendingDeals.filter(d => d !== deal);
+            resetButtons();
+            startTurnLogic();
+        }
+
+        function resetButtons() {
+            let p = getCurrentPlayer();
+            let buyBtn = document.getElementById('btn-buy');
+            buyBtn.innerText = t('buy', p.lang);
+            buyBtn.onclick = buyProperty;
+            let endBtn = document.getElementById('btn-end');
+            endBtn.innerText = t('end', p.lang);
+            endBtn.onclick = endTurn;
+        }
+
+        function endTurn() {
+            let startIdx = state.currentPlayerIdx;
+            do {
+                state.currentPlayerIdx = (state.currentPlayerIdx + 1) % state.players.length;
+            } while (state.players[state.currentPlayerIdx].bankrupt && state.currentPlayerIdx !== startIdx);
+
+            let active = state.players.filter(pl => !pl.bankrupt);
+            if (active.length === 1) {
+                alert(`GAME OVER! ${active[0].name} ${t('winner', active[0].lang)}`);
+                return;
+            }
+            startTurnLogic();
+        }
+
+        // --- UI ---
         function log(msg) {
             let div = document.createElement('div');
-            div.className = 'log-entry';
             div.innerHTML = `> ${msg}`;
-            document.getElementById('log-container').appendChild(div);
-            // Scroll to bottom
-            let c = document.getElementById('log-container');
-            c.scrollTop = c.scrollHeight;
+            let container = document.getElementById('log-container');
+            container.appendChild(div);
+            container.scrollTop = container.scrollHeight;
         }
 
         function updateUI() {
             if (!state.gameStarted) return;
+            let p = getCurrentPlayer();
+            let space = BOARD[p.pos];
 
-            let currentP = getCurrentPlayer();
-            let space = BOARD[currentP.pos];
-
-            // Scene Image Logic
-            let bg = ASSETS.divebar; // Default gritty view
-            // Use Mansion for expensive/safe locations
-            if (space.type === 'GO' || (space.group && ['Green', 'D.Blue', 'Yellow', 'Red'].includes(space.group))) {
-                bg = ASSETS.mansion;
-            }
+            let bg = ASSETS.divebar;
+            if (space.type === 'GO' || (space.group && ['Green', 'D.Blue', 'Yellow', 'Red'].includes(space.group))) bg = ASSETS.mansion;
             document.body.style.backgroundImage = `url('${bg}')`;
 
-            // Stats Header
             let header = document.getElementById('stats-header');
-            header.innerHTML = '';
+            header.innerHTML = "";
             state.players.forEach((pl, idx) => {
-                let div = document.createElement('div');
-                div.className = `player-stat-card ${idx === state.currentPlayerIdx ? 'active' : ''}`;
-                if (pl.bankrupt) div.style.opacity = '0.4';
-
-                let propsText = pl.properties.length > 0 ? pl.properties.length : "0";
-
-                div.innerHTML = `
-                    <div style="color:${pl.color}; text-transform:uppercase; margin-bottom:5px;">${pl.name}</div>
-                    <div>CASH: $${pl.money}</div>
-                    <div>TURF: ${propsText}</div>
-                    ${pl.inJail ? '<div style="color:var(--accent-color)">[PINCHED]</div>' : ''}
+                let card = document.createElement('div');
+                card.className = `player-stat-card ${idx === state.currentPlayerIdx ? 'active' : ''}`;
+                if (pl.bankrupt) card.style.opacity = "0.4";
+                card.innerHTML = `
+                    <div style="color:${pl.color}; margin-bottom:calc(2*var(--pixel));">${pl.name}</div>
+                    <div>${t('cash', p.lang)}: $${pl.money}</div>
+                    <div>${t('turf', p.lang)}: ${pl.properties.length}</div>
+                    ${pl.inJail ? `<div style="color:var(--accent-color)">${t('pinched', p.lang)}</div>` : ''}
                 `;
-                header.appendChild(div);
+                header.appendChild(card);
             });
 
-            // Add Save/Load buttons to header
-            let ops = document.createElement('div');
-            ops.className = 'system-ops';
-            ops.innerHTML = `
-                <button onclick="saveGame()" style="padding: 5px; min-width: 60px; font-size:6px;">SAVE</button>
-                <button onclick="loadGame()" style="padding: 5px; min-width: 60px; font-size:6px;">LOAD</button>
-            `;
-            header.appendChild(ops);
-
-            // Buttons state
-            document.getElementById('scene-bg').querySelector('#btn-expand')?.remove();
+            // Buttons
+            let buyBtn = document.getElementById('btn-buy');
+            let endBtn = document.getElementById('btn-end');
+            let tradeBtn = document.getElementById('btn-trade');
 
             if (state.phase !== 'TRADE_RESPONSE') {
-                document.getElementById('btn-buy').disabled = (state.phase !== 'BUY_DECISION');
-                document.getElementById('btn-buy').classList.toggle('hidden', state.phase !== 'BUY_DECISION' && state.phase !== 'IMPROVE');
-
-                let expandBtn = document.getElementById('btn-expand');
-                if (!expandBtn) {
-                    expandBtn = document.createElement('button');
-                    expandBtn.id = 'btn-expand';
-                    expandBtn.onclick = expandRacket;
-                    document.querySelector('.controls').prepend(expandBtn);
+                buyBtn.classList.toggle('hidden', state.phase !== 'BUY_DECISION' && state.phase !== 'IMPROVE');
+                buyBtn.disabled = (state.phase !== 'BUY_DECISION' && state.phase !== 'IMPROVE');
+                if (state.phase === 'IMPROVE') {
+                    let data = state.propData[space.name];
+                    buyBtn.innerText = data.muscle < 4 ? t('expand', p.lang) : t('hub', p.lang);
+                    buyBtn.onclick = expandRacket;
+                } else {
+                    buyBtn.innerText = t('buy', p.lang);
+                    buyBtn.onclick = buyProperty;
                 }
-                expandBtn.innerText = (state.propData[space.name]?.muscle < 4) ? "ADD MUSCLE" : "BUILD HUB";
-                expandBtn.disabled = (state.phase !== 'IMPROVE');
-                expandBtn.classList.toggle('hidden', state.phase !== 'IMPROVE');
 
-                document.getElementById('btn-trade').classList.toggle('hidden', state.phase === 'ROLL');
-                document.getElementById('btn-end').disabled = (state.phase !== 'END' && state.phase !== 'BUY_DECISION' && state.phase !== 'IMPROVE');
-                document.getElementById('btn-end').classList.remove('hidden');
-            } else {
-                document.getElementById('btn-expand')?.classList.add('hidden');
-                document.getElementById('btn-trade').classList.add('hidden');
+                tradeBtn.innerText = t('deal', p.lang);
+                tradeBtn.classList.toggle('hidden', state.phase === 'ROLL');
+
+                endBtn.innerText = t('end', p.lang);
+                endBtn.onclick = endTurn;
+                endBtn.disabled = (state.phase !== 'END' && state.phase !== 'BUY_DECISION' && state.phase !== 'IMPROVE');
             }
 
-            // Bail button visibility
-            // Since rolls are auto, bail is only available if we want to allow it post-failure or strictly before?
-            // For simplified "hidden" mechanics, we hide bail for now or only show if stuck?
-            // Let's hide it to keep mechanics fully hidden/automated.
-            document.getElementById('btn-bail').style.display = 'none';
+            // Shortkeys
+            const btns = Array.from(document.querySelectorAll('.controls button:not(.hidden)'));
+            btns.forEach((btn, idx) => {
+                const base = btn.innerText.replace(/^\d: /, "");
+                btn.innerText = `${idx + 1}: ${base}`;
+            });
 
-            // Roll button logic removed
-
-            // Side Panel (Removed, now stats are in header)
+            document.getElementById('log-history-title').innerText = t('history', p.lang);
         }
 
-        // --- SAVE / LOAD SYSTEM ---
+        window.addEventListener('keydown', (e) => {
+            if (!state.gameStarted) return;
+            if (['INPUT', 'SELECT'].includes(document.activeElement.tagName)) return;
+            let idx = parseInt(e.key) - 1;
+            let btns = Array.from(document.querySelectorAll('.controls button:not(.hidden)')).filter(b => !b.disabled);
+            if (idx >= 0 && idx < btns.length) btns[idx].click();
+        });
+
         function saveGame() {
             localStorage.setItem('omerta_save', JSON.stringify(state));
-            alert("Game Saved to Browser Storage.");
+            alert("Saved.");
         }
-
         function loadGame() {
             let s = localStorage.getItem('omerta_save');
             if (s) {
                 state = JSON.parse(s);
-                // Hide setup, show game
                 document.getElementById('setup-screen').classList.add('hidden');
                 document.getElementById('game-ui').style.display = 'flex';
-
-                // Compatibility: If loaded game was waiting for roll, auto-roll now
-                if (state.phase === 'ROLL') {
-                    startTurnLogic();
-                } else {
-                    log(`<span class="log-good">Game Loaded Successfully.</span>`);
-                    updateUI();
-                }
-            } else {
-                alert("No saved game found.");
+                updateUI();
             }
         }
-
     </script>
 </body>
 
